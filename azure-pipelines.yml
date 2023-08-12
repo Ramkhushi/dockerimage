@@ -1,6 +1,7 @@
 trigger:
 - main
-
+variables:
+    env: dev
 pool: 
   vmImage: ubuntu-latest
 stages:
@@ -10,5 +11,7 @@ stages:
     steps:
      - script: pwd
        displayName: "This is my first stage task"
+     - script: echo $(env)
+       displayName:  Test Variable
 
 
