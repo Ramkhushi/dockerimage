@@ -9,5 +9,6 @@ stages:
   - job: job1
     steps:
      - script: pwd
+       displayName: "This is my first stage task"
 
 
