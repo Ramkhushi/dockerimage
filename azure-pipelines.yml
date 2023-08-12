@@ -2,8 +2,7 @@ trigger:
 - main
 variables:
     env: dev
-pool: 
-  vmImage: ubuntu-latest
+pool: own-agents
 stages:
 - stage: build
   jobs:
