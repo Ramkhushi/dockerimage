@@ -13,5 +13,11 @@ stages:
        displayName: "This is my first stage task"
      - script: echo $(foo)
        displayName:  Test Variable
+- stage: Test
+  jobs: 
+  - job: job2
+    steps:
+    - script: echo "This is another job"
+      displayName: Another job  
 
 
