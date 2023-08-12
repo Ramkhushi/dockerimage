@@ -11,7 +11,7 @@ stages:
     steps:
      - script: pwd
        displayName: "This is my first stage task"
-     - script: echo $(env)
+     - script: echo $(foo)
        displayName:  Test Variable
 
 
