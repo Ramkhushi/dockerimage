@@ -20,5 +20,6 @@ stages:
     steps:
     - script: echo "This is another job"
       displayName: Another job  
-
+    - script: echo $(Agent.WorkFolder)
+      displayName: test predefined variables
 
