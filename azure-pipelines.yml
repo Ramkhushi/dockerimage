@@ -22,4 +22,15 @@ stages:
       displayName: Another job  
     - script: echo $(Agent.WorkFolder)
       displayName: test predefined variables
+    - script: ls -ltr $(agent.builddirectory)
 
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(agent.builddirectory)'
+        Contents: '**'
+        TargetFolder: '$(build.artifactstagingdirectory)'
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
