@@ -2,7 +2,7 @@ trigger:
 - main
 variables:
     env: dev
-pool: own-agents
+pool: news
 stages:
 - stage: build
   jobs:
@@ -12,24 +12,3 @@ stages:
        displayName: "This is my first stage task"
      - script: echo $(foo)
        displayName:  Test Variable
-- stage: Test
-  dependsOn: build
-  jobs: 
-  - job: job2
-    steps:
-    - script: echo "This is another job"
-      displayName: Another job  
-    - script: echo $(Agent.WorkFolder)
-      displayName: test predefined variables
-    - script: ls -ltr $(agent.builddirectory)
-
-    - task: CopyFiles@2
-      inputs:
-        SourceFolder: '$(agent.builddirectory)'
-        Contents: '**'
-        TargetFolder: '$(build.artifactstagingdirectory)'
-    - task: PublishBuildArtifacts@1
-      inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'drop'
-        publishLocation: 'Container'
